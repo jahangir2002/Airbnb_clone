@@ -43,7 +43,7 @@ const Container = () => {
       </div>
 
       {/* Search Bar */}
-      <div className="flex items-center justify-between rounded-full shadow-md bg-white max-w-4xl mx-auto py-2 px-4">
+      <div className="flex items-center justify-between rounded-full shadow-md bg-white max-w-4xl mx-auto p-4">
         {/* Search Sections */}
         <div className="flex items-center flex-grow divide-x divide-gray-300">
           {/* Where Section */}
