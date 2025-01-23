@@ -14,29 +14,29 @@ const Container = () => {
         <div className="w-[10vw]">
           <img src="./Airbnb-Logo.wine.png" alt="Airbnb Logo" />
         </div>
-        <div className="flex gap-x-10 text-2xl">
+        <div className="flex gap-x-10 text-1xl">
           <h2
-            className={`cursor-pointer ${
-              activeTab === "Stays" ? "font-bold underline" : ""
+            className={`cursor-pointer hover:bg-gray-100 p-2 rounded-full ${
+              activeTab === "Stays" ? "font-bold " : ""
             }`}
             onClick={() => setActiveTab("Stays")}
           >
             Stays
           </h2>
           <h2
-            className={`cursor-pointer ${
-              activeTab === "Experience" ? "font-bold underline" : ""
+            className={`cursor-pointer hover:bg-gray-100 p-2 rounded-full ${
+              activeTab === "Experience" ? "font-bold " : ""
             }`}
             onClick={() => setActiveTab("Experience")}
           >
             Experience
           </h2>
         </div>
-        <div className="flex text-xl items-center gap-x-4">
-          <h2>Airbnb your home</h2>
+        <div className="flex text-[16px] items-center gap-x-4 cursor-pointer">
+          <h2 className="hover:bg-gray-100 p-3 rounded-full">Airbnb your home</h2>
           <LuGlobe />
           <div className="login flex gap-x-4 text-4xl border-2 border-gray-200 p-2 rounded-full">
-            <RxHamburgerMenu />
+            <RxHamburgerMenu className="hover:bg-gray-100 p-3 rounded-full" />
             <MdAccountCircle />
           </div>
         </div>
