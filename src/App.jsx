@@ -1,8 +1,12 @@
 import React from 'react'
+import Navbar from './components/Navbar'
 
 const App = () => {
   return (
-    <div class='text-6xl font-bold text-red-500 underline'>App</div>
+    <main className='relative min-h-screen w-screen overflow-x-hidden'>
+      <Navbar />
+
+    </main>
   )
 }
 
