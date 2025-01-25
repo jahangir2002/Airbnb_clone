@@ -4,11 +4,14 @@ import { RxHamburgerMenu } from "react-icons/rx";
 import { MdAccountCircle } from "react-icons/md";
 import { FaSearch } from "react-icons/fa";
 import { Autocomplete, TextField } from "@mui/material";
+import { DateRangePicker } from 'rsuite';
+import 'rsuite/dist/rsuite.min.css';
 
 const Container = () => {
   const [activeTab, setActiveTab] = useState("Stays");
   const [showDropdown, setShowDropdown] = useState(false);
   const [searchDestination, setSearchDestination] = useState("");
+  const [dateRange, setDateRange] = useState([null, null]);
 
   const suggestedDestinations = [
     { id: 1, name: "New York" },
@@ -100,10 +103,11 @@ const Container = () => {
                 <span className="text-xs font-bold text-gray-600">
                   Check in
                 </span>
-                <input
-                  type="text"
-                  placeholder="Add dates"
-                  className="text-sm text-gray-400 outline-none"
+                <DateRangePicker
+                  value={dateRange}
+                  onChange={setDateRange}
+                  placeholder="Select date range"
+                  style={{ width: 220 }}
                 />
               </div>
 
@@ -112,10 +116,11 @@ const Container = () => {
                 <span className="text-xs font-bold text-gray-600">
                   Check out
                 </span>
-                <input
-                  type="text"
-                  placeholder="Add dates"
-                  className="text-sm text-gray-400 outline-none"
+                <DateRangePicker
+                  value={dateRange}
+                  onChange={setDateRange}
+                  placeholder="Select date range"
+                  style={{ width: 220 }}
                 />
               </div>
             </>
@@ -126,17 +131,17 @@ const Container = () => {
               {/* Date Section */}
               <div className="flex flex-col px-4">
                 <span className="text-xs font-bold text-gray-600">Date</span>
-                <input
-                  type="text"
-                  placeholder="Add dates"
-                  className="text-sm text-gray-400 outline-none"
+                <DateRangePicker
+                  value={dateRange}
+                  onChange={setDateRange}
+                  placeholder="Select date range"
+                  style={{ width: 220 }}
                 />
               </div>
             </>
           )}
 
           {/* Who Section */}
-
           <div className="flex flex-col px-4">
             <span className="text-xs font-bold text-gray-600">Who</span>
             <input
@@ -144,8 +149,6 @@ const Container = () => {
               placeholder="Add guests"
               className="text-sm text-gray-400 outline-none"
             />
-
-            
           </div>
         </div>
 
