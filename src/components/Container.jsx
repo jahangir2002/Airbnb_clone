@@ -47,27 +47,27 @@ const Container = () => {
           <img src="./Airbnb-Logo.wine.png" alt="Airbnb Logo" />
         </div>
         <div className="flex gap-x-10 text-1xl">
-          <h2
+          <div
             className={`cursor-pointer hover:bg-gray-100 p-2 rounded-full ${
               activeTab === "Stays" ? "font-bold " : ""
             }`}
             onClick={() => setActiveTab("Stays")}
           >
             Stays
-          </h2>
-          <h2
+          </div>
+          <div
             className={`cursor-pointer hover:bg-gray-100 p-2 rounded-full ${
               activeTab === "Experience" ? "font-bold " : ""
             }`}
             onClick={() => setActiveTab("Experience")}
           >
             Experience
-          </h2>
+          </div>
         </div>
         <div className="flex text-[16px] items-center gap-x-4 cursor-pointer">
-          <h2 className="hover:bg-gray-100 p-3 rounded-full">
+          <div className="hover:bg-gray-100 p-3 rounded-full">
             Airbnb your home
-          </h2>
+          </div>
           <LuGlobe />
           <div className="login flex gap-x-4 text-4xl border-2 border-gray-200 p-2 rounded-full">
             <RxHamburgerMenu className="hover:bg-gray-100 p-3 rounded-full" />
@@ -77,11 +77,11 @@ const Container = () => {
       </div>
 
       {/* Search Bar */}
-      <div className="flex items-center justify-between rounded-full shadow-md bg-white max-w-4xl mx-auto ">
+      <div className="flex items-center justify-between rounded-full shadow-md bg-white max-w-auto mx-auto ">
         {/* Search Sections */}
         <div className="flex items-center flex-grow divide-x divide-gray-300 cursor-pointer">
           {/* Where Section */}
-          <div className="flex flex-col hover:bg-gray-300 px-10 hover:rounded-full ">
+          <div className="flex flex-col hover:bg-gray-300 px-10 hover:rounded-3xl ">
             <span className="text-xs font-bold text-gray-600">Where</span>
             <Autocomplete
               id="where-autocomplete"
@@ -113,7 +113,7 @@ const Container = () => {
           {activeTab === "Stays" && (
             <>
               {/* Check-in Section */}
-              <div className="flex flex-col px-4">
+              <div className="flex flex-col px-4 py-3 hover:bg-gray-300 hover:rounded-3xl">
                 <span className="text-xs font-bold text-gray-600">
                   Check in
                 </span>
@@ -126,7 +126,7 @@ const Container = () => {
               </div>
 
               {/* Check-out Section */}
-              <div className="flex flex-col px-4">
+              <div className="flex flex-col px-4 py-3 hover:bg-gray-300 hover:rounded-3xl">
                 <span className="text-xs font-bold text-gray-600">
                   Check out
                 </span>
@@ -143,7 +143,7 @@ const Container = () => {
           {activeTab === "Experience" && (
             <>
               {/* Date Section */}
-              <div className="flex flex-col px-4">
+              <div className="flex flex-col px-4 py-3 hover:bg-gray-300 hover:rounded-3xl">
                 <span className="text-xs font-bold text-gray-600">Date</span>
                 <DateRangePicker
                   value={dateRange}
@@ -156,7 +156,7 @@ const Container = () => {
           )}
 
           {/* Who Section */}
-          <div className="flex flex-col px-4">
+          <div className="flex flex-col px-4 py-4 hover:bg-gray-300 hover:rounded-3xl">
             <span className="text-xs font-bold text-gray-600">Who</span>
             <Whisper
               placement="bottom"
