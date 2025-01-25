@@ -3,6 +3,7 @@ import { LuGlobe } from "react-icons/lu";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { MdAccountCircle } from "react-icons/md";
 import { FaSearch } from "react-icons/fa";
+import { Autocomplete, TextField } from "@mui/material";
 import { Dropdown, Popover, Whisper, Button } from 'rsuite';
 import { DateRangePicker } from 'rsuite';
 import PassengerCounter from './PassengerCounter';
@@ -82,16 +83,30 @@ const Container = () => {
           {/* Where Section */}
           <div className="flex flex-col hover:bg-gray-300 px-10 hover:rounded-full ">
             <span className="text-xs font-bold text-gray-600">Where</span>
-            <Dropdown
-              title="Search destinations"
-              onSelect={(eventKey, event) => setSearchDestination(eventKey)}
-            >
-              {suggestedDestinations.map((destination) => (
-                <Dropdown.Item key={destination.id} eventKey={destination.name}>
-                  {destination.name}
-                </Dropdown.Item>
-              ))}
-            </Dropdown>
+            <Autocomplete
+              id="where-autocomplete"
+              options={suggestedDestinations}
+              getOptionLabel={(option) => option.name}
+              renderInput={(params) => (
+                <TextField
+                  {...params}
+                  className="!w-40"
+                  variant="outlined"
+                  placeholder="Search destinations"
+                  value={searchDestination}
+                  onChange={(e) => setSearchDestination(e.target.value)}
+                  onClick={() => setShowDropdown(!showDropdown)}
+                  sx={{
+                    "& .MuiOutlinedInput-notchedOutline": {
+                      border: "none",
+                    },
+                  }}
+                />
+              )}
+              open={showDropdown}
+              onClose={() => setShowDropdown(false)}
+              onOpen={() => setShowDropdown(true)}
+            />
           </div>
 
           {/* Conditional Sections */}
@@ -152,6 +167,9 @@ const Container = () => {
                   <PassengerCounter label="Children" initialCount={passengers.children} onChange={(count) => handlePassengerChange('children', count)} />
                   <PassengerCounter label="Infants" initialCount={passengers.infants} onChange={(count) => handlePassengerChange('infants', count)} />
                   <PassengerCounter label="Pets" initialCount={passengers.pets} onChange={(count) => handlePassengerChange('pets', count)} />
+                  <div className="text-right mt-4">
+                    <Button onClick={() => setShowDropdown(false)}>OK</Button>
+                  </div>
                 </Popover>
               }
             >
