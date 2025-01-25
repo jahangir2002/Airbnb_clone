@@ -3,8 +3,9 @@ import { LuGlobe } from "react-icons/lu";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { MdAccountCircle } from "react-icons/md";
 import { FaSearch } from "react-icons/fa";
-import { Autocomplete, TextField } from "@mui/material";
+import { Dropdown, Popover, Whisper, Button } from 'rsuite';
 import { DateRangePicker } from 'rsuite';
+import PassengerCounter from './PassengerCounter';
 import 'rsuite/dist/rsuite.min.css';
 
 const Container = () => {
@@ -12,6 +13,18 @@ const Container = () => {
   const [showDropdown, setShowDropdown] = useState(false);
   const [searchDestination, setSearchDestination] = useState("");
   const [dateRange, setDateRange] = useState([null, null]);
+  const [passengers, setPassengers] = useState({
+    adults: 0,
+    children: 0,
+    infants: 0,
+    pets: 0,
+  });
+
+  const handlePassengerChange = (type, count) => {
+    setPassengers((prev) => ({ ...prev, [type]: count }));
+  };
+
+  const totalPassengers = Object.values(passengers).reduce((a, b) => a + b, 0);
 
   const suggestedDestinations = [
     { id: 1, name: "New York" },
@@ -33,27 +46,27 @@ const Container = () => {
           <img src="./Airbnb-Logo.wine.png" alt="Airbnb Logo" />
         </div>
         <div className="flex gap-x-10 text-1xl">
-          <div
+          <h2
             className={`cursor-pointer hover:bg-gray-100 p-2 rounded-full ${
               activeTab === "Stays" ? "font-bold " : ""
             }`}
             onClick={() => setActiveTab("Stays")}
           >
             Stays
-          </div>
-          <div
+          </h2>
+          <h2
             className={`cursor-pointer hover:bg-gray-100 p-2 rounded-full ${
               activeTab === "Experience" ? "font-bold " : ""
             }`}
             onClick={() => setActiveTab("Experience")}
           >
             Experience
-          </div>
+          </h2>
         </div>
         <div className="flex text-[16px] items-center gap-x-4 cursor-pointer">
-          <div className="hover:bg-gray-100 p-3 rounded-full">
+          <h2 className="hover:bg-gray-100 p-3 rounded-full">
             Airbnb your home
-          </div>
+          </h2>
           <LuGlobe />
           <div className="login flex gap-x-4 text-4xl border-2 border-gray-200 p-2 rounded-full">
             <RxHamburgerMenu className="hover:bg-gray-100 p-3 rounded-full" />
@@ -67,32 +80,18 @@ const Container = () => {
         {/* Search Sections */}
         <div className="flex items-center flex-grow divide-x divide-gray-300 cursor-pointer">
           {/* Where Section */}
-          <div className="flex flex-col px-4 hover:bg-gray-300 hover:rounded-full ">
+          <div className="flex flex-col hover:bg-gray-300 px-10 hover:rounded-full ">
             <span className="text-xs font-bold text-gray-600">Where</span>
-            <Autocomplete
-              id="where-autocomplete"
-              options={suggestedDestinations}
-              getOptionLabel={(option) => option.name}
-              renderInput={(params) => (
-                <TextField
-                  {...params}
-                  className="!w-40"
-                  variant="outlined"
-                  placeholder="Search destinations"
-                  value={searchDestination}
-                  onChange={(e) => setSearchDestination(e.target.value)}
-                  onClick={() => setShowDropdown(!showDropdown)}
-                  sx={{
-                    "& .MuiOutlinedInput-notchedOutline": {
-                      border: "none",
-                    },
-                  }}
-                />
-              )}
-              open={showDropdown}
-              onClose={() => setShowDropdown(false)}
-              onOpen={() => setShowDropdown(true)}
-            />
+            <Dropdown
+              title="Search destinations"
+              onSelect={(eventKey, event) => setSearchDestination(eventKey)}
+            >
+              {suggestedDestinations.map((destination) => (
+                <Dropdown.Item key={destination.id} eventKey={destination.name}>
+                  {destination.name}
+                </Dropdown.Item>
+              ))}
+            </Dropdown>
           </div>
 
           {/* Conditional Sections */}
@@ -144,11 +143,24 @@ const Container = () => {
           {/* Who Section */}
           <div className="flex flex-col px-4">
             <span className="text-xs font-bold text-gray-600">Who</span>
-            <input
-              type="text"
-              placeholder="Add guests"
-              className="text-sm text-gray-400 outline-none"
-            />
+            <Whisper
+              placement="bottom"
+              trigger="click"
+              speaker={
+                <Popover title="Select Passengers">
+                  <PassengerCounter label="Adults" initialCount={passengers.adults} onChange={(count) => handlePassengerChange('adults', count)} />
+                  <PassengerCounter label="Children" initialCount={passengers.children} onChange={(count) => handlePassengerChange('children', count)} />
+                  <PassengerCounter label="Infants" initialCount={passengers.infants} onChange={(count) => handlePassengerChange('infants', count)} />
+                  <PassengerCounter label="Pets" initialCount={passengers.pets} onChange={(count) => handlePassengerChange('pets', count)} />
+                </Popover>
+              }
+            >
+              <input
+                type="text"
+                placeholder={`Add guests (${totalPassengers})`}
+                className="text-sm text-gray-400 outline-none"
+              />
+            </Whisper>
           </div>
         </div>
 
