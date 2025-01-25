@@ -33,27 +33,27 @@ const Container = () => {
           <img src="./Airbnb-Logo.wine.png" alt="Airbnb Logo" />
         </div>
         <div className="flex gap-x-10 text-1xl">
-          <h2
+          <div
             className={`cursor-pointer hover:bg-gray-100 p-2 rounded-full ${
               activeTab === "Stays" ? "font-bold " : ""
             }`}
             onClick={() => setActiveTab("Stays")}
           >
             Stays
-          </h2>
-          <h2
+          </div>
+          <div
             className={`cursor-pointer hover:bg-gray-100 p-2 rounded-full ${
               activeTab === "Experience" ? "font-bold " : ""
             }`}
             onClick={() => setActiveTab("Experience")}
           >
             Experience
-          </h2>
+          </div>
         </div>
         <div className="flex text-[16px] items-center gap-x-4 cursor-pointer">
-          <h2 className="hover:bg-gray-100 p-3 rounded-full">
+          <div className="hover:bg-gray-100 p-3 rounded-full">
             Airbnb your home
-          </h2>
+          </div>
           <LuGlobe />
           <div className="login flex gap-x-4 text-4xl border-2 border-gray-200 p-2 rounded-full">
             <RxHamburgerMenu className="hover:bg-gray-100 p-3 rounded-full" />
@@ -67,7 +67,7 @@ const Container = () => {
         {/* Search Sections */}
         <div className="flex items-center flex-grow divide-x divide-gray-300 cursor-pointer">
           {/* Where Section */}
-          <div className="flex flex-col hover:bg-gray-300 px-10 hover:rounded-full ">
+          <div className="flex flex-col px-4 hover:bg-gray-300 hover:rounded-full ">
             <span className="text-xs font-bold text-gray-600">Where</span>
             <Autocomplete
               id="where-autocomplete"
