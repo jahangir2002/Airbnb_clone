@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import carouselData from '../data/CarouselData';
+import { FiFilter } from "react-icons/fi";
+import { Toggle } from 'rsuite';
 
 const Filter = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -21,24 +23,38 @@ const Filter = () => {
   const isNextDisabled = currentIndex >= carouselData.length - itemsToShow;
 
   return (
-    <div className='relative w-full'>
-      <div className='flex justify-between items-center'>
-        <button onClick={handlePrevClick} disabled={isPrevDisabled}>&lt;</button> {/* Previous Button */}
-        <div className='flex gap-4 overflow-hidden w-full'>
+    <div className='relative w-full flex justify-between'>
+        <div className='w-[65%]'>
+            <div className='flex justify-between items-center'>
+        <button className='arrow !border-1 border-gray-400 hover:!shadow-md shadow-gray-400 px-2.5 py-1 !rounded-full' onClick={handlePrevClick} disabled={isPrevDisabled}>&lt;</button> {/* Previous Button */}
+        <div className='flex justify-evenly overflow-hidden w-full'>
           {carouselData.slice(currentIndex, currentIndex + itemsToShow).map((carousel) => (
             <div key={carousel.id} className='flex-shrink-0'>
               <img
                 src={carousel.img}
                 alt={`carousel ${carousel.id}`}
-                width={100}
-                height={100}
+                width={30}
+                height={30}
               />
               <div>{carousel.title || ''}</div>
             </div>
           ))}
         </div>
-        <button onClick={handleNextClick} disabled={isNextDisabled}>&gt;</button> {/* Next Button */}
+        <button className='arrow !border-1 border-gray-400 hover:!shadow-md shadow-gray-400 px-2.5 py-1 !rounded-full' onClick={handleNextClick} disabled={isNextDisabled}>&gt;</button> {/* Next Button */}
       </div>
+        </div>
+
+        <div className=' flex gap-5'>
+           <button className='!border-1 border-gray-300 px-4 py-3 !rounded-md flex items-center gap-2 hover:bg-gray-200 hover:border-gray-500'>
+           <FiFilter />
+            Filters
+           </button>
+           <button className='!border-1 border-gray-300 px-4 py-3 !rounded-md flex items-center gap-2 hover:bg-gray-200 hover:border-gray-500'> Display total before taxes
+           <Toggle defaultChecked color="red" />
+           </button>
+
+        </div>
+      
     </div>
   );
 };
