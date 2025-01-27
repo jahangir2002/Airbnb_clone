@@ -3,7 +3,7 @@ import Container from './container'
 
 const Navbar = () => {
   return (
-    <div className='fixed w-full bg-white z-10 drop-shadow-sm'>
+    <div className=' w-full bg-white z-10 drop-shadow-sm'>
         <div className='pb-6'>
 
             <Container />

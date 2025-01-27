@@ -40,7 +40,7 @@ const Container = () => {
   ];
 
   return (
-    <div className="max-w-[2520px] mx-auto px-4 xl:px-20 md:px-10 sm:px-2">
+    <div className="relative max-w-[2520px] mx-auto px-4 xl:px-20 md:px-10 sm:px-2">
       {/* Navbar */}
       <div className="flex justify-between items-center py-4">
         <div className="w-[10vw]">
@@ -167,9 +167,7 @@ const Container = () => {
                   <PassengerCounter label="Children" initialCount={passengers.children} onChange={(count) => handlePassengerChange('children', count)} />
                   <PassengerCounter label="Infants" initialCount={passengers.infants} onChange={(count) => handlePassengerChange('infants', count)} />
                   <PassengerCounter label="Pets" initialCount={passengers.pets} onChange={(count) => handlePassengerChange('pets', count)} />
-                  <div className="text-right mt-4">
-                    <Button onClick={() => setShowDropdown(false)}>OK</Button>
-                  </div>
+                  
                 </Popover>
               }
             >
