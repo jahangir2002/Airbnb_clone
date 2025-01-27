@@ -3,25 +3,28 @@ import carouselData from '../data/CarouselData';
 
 const Filter = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const itemsToShow = 3; // Number of items to show at once
+  const itemsToShow = 7; // Number of items to show at once
 
   const handlePrevClick = () => {
     setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? carouselData.length - itemsToShow : prevIndex - 1
+      prevIndex === 0 ? 0 : prevIndex - itemsToShow
     );
   };
 
   const handleNextClick = () => {
     setCurrentIndex((prevIndex) =>
-      prevIndex === carouselData.length - itemsToShow ? 0 : prevIndex + 1
+      prevIndex >= carouselData.length - itemsToShow ? prevIndex : prevIndex + itemsToShow
     );
   };
+
+  const isPrevDisabled = currentIndex === 0;
+  const isNextDisabled = currentIndex >= carouselData.length - itemsToShow;
 
   return (
     <div className='relative w-full'>
       <div className='flex justify-between items-center'>
-        <button onClick={handlePrevClick}>&lt;</button> {/* Previous Button */}
-        <div className='flex gap-4 overflow-hidden w-[50%]'>
+        <button onClick={handlePrevClick} disabled={isPrevDisabled}>&lt;</button> {/* Previous Button */}
+        <div className='flex gap-4 overflow-hidden w-full'>
           {carouselData.slice(currentIndex, currentIndex + itemsToShow).map((carousel) => (
             <div key={carousel.id} className='flex-shrink-0'>
               <img
@@ -34,7 +37,7 @@ const Filter = () => {
             </div>
           ))}
         </div>
-        <button onClick={handleNextClick}>&gt;</button> {/* Next Button */}
+        <button onClick={handleNextClick} disabled={isNextDisabled}>&gt;</button> {/* Next Button */}
       </div>
     </div>
   );
