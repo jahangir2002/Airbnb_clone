@@ -2,10 +2,10 @@ const ContentData = [
     {
         id: 1,
         images: [
-          "https://example.com/image1a.jpg", 
-          "https://example.com/image1b.jpg",
-          "https://example.com/image1c.jpg",
-          "https://example.com/image1d.jpg"
+          "src/assets/content_img/data1.jpeg", 
+          "src/assets/content_img/data2.jpeg",
+          "src/assets/content_img/data3.jpeg",
+          "src/assets/content_img/data4.jpeg"
         ],
         title: "Bujra, India",
         builtYear: "Built in 2020",
@@ -15,10 +15,10 @@ const ContentData = [
       {
         id: 2,
         images: [
-          "https://example.com/image2a.jpg", 
-          "https://example.com/image2b.jpg",
-          "https://example.com/image2c.jpg",
-          "https://example.com/image2d.jpg"
+          "src/assets/content_img/data1.jpeg", 
+          "src/assets/content_img/data2.jpeg",
+          "src/assets/content_img/data3.jpeg",
+          "src/assets/content_img/data4.jpeg"
         ],
         title: "Bujra, India",
         builtYear: "Built in 2020",
@@ -28,10 +28,10 @@ const ContentData = [
       {
         id: 3,
         images: [
-          "https://example.com/image3a.jpg", 
-          "https://example.com/image3b.jpg",
-          "https://example.com/image3c.jpg",
-          "https://example.com/image3d.jpg"
+          "src/assets/content_img/data1.jpeg", 
+          "src/assets/content_img/data2.jpeg",
+          "src/assets/content_img/data3.jpeg",
+          "src/assets/content_img/data4.jpeg"
         ],
         title: "Bujra, India",
         builtYear: "Built in 2020",
@@ -41,10 +41,10 @@ const ContentData = [
       {
         id: 4,
         images: [
-          "https://example.com/image4a.jpg", 
-          "https://example.com/image4b.jpg",
-          "https://example.com/image4c.jpg",
-          "https://example.com/image4d.jpg"
+          "src/assets/content_img/data1.jpeg", 
+          "src/assets/content_img/data2.jpeg",
+          "src/assets/content_img/data3.jpeg",
+          "src/assets/content_img/data4.jpeg"
         ],
         title: "Bujra, India",
         builtYear: "Built in 2020",
