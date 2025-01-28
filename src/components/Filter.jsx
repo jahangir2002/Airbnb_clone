@@ -23,7 +23,7 @@ const Filter = () => {
   const isNextDisabled = currentIndex >= carouselData.length - itemsToShow;
 
   return (
-    <div className='relative w-full flex justify-between'>
+    <div className='flex justify-between'>
         <div className='w-[65%]'>
             <div className='flex justify-between items-center'>
         <button className='arrow !border-1 border-gray-400 hover:!shadow-md shadow-gray-400 px-2.5 py-1 !rounded-full' onClick={handlePrevClick} disabled={isPrevDisabled}>&lt;</button> {/* Previous Button */}
