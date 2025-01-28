@@ -24,7 +24,7 @@ const Content = () => {
   return (
     <div className="relative mt-5 max-w-[2520px] mx-auto px-4 xl:px-20 md:px-10 sm:px-2">
       <Filter />
-      <div className="flex flex-wrap justify-between mt-2">
+      <div className="flex flex-wrap gap-10 mt-2">
         {ContentData.map((data, index) => (
           <div key={data.id} className="card relative lg:mb-10">
             <div className="carousel relative flex items-center justify-center">
@@ -36,7 +36,7 @@ const Content = () => {
               >
                 &lt;
               </button>
-              <img src={data.images[currentImgs[index]]} alt="multi" width={250} />
+              <img src={data.images[currentImgs[index]]} alt="multi" width={250} className="rounded-2xl mb-5" />
               <button 
                 onClick={() => nextImg(index)} 
                 className="absolute right-0 bg-white !m-2 text-white text-2xl px-2.5 py-1 !rounded-full"
